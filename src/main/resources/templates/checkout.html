@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Checkout - Online Shop</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:Arial;margin:0;padding:0}
+    header,footer{background:#222;color:#fff;padding:12px 20px}
+    .container{padding:20px;max-width:700px;margin:0 auto}
+    label{display:block;margin-top:8px}
+    input,select{width:100%;padding:8px;margin-top:4px;border:1px solid #ccc;border-radius:4px}
+    .btn{padding:10px 14px;background:#007bff;color:#fff;text-decoration:none;border:none;border-radius:4px;cursor:pointer;margin-top:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="display:inline">Checkout</h1>
+    <nav style="float:right"><a href="/">Home</a><a href="/cart" style="margin-left:10px">Cart</a></nav>
+  </header>
+
+  <div class="container">
+    <h3>Shipping Information</h3>
+    <form action="/checkout/confirm" method="post">
+      <label>Full name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>Address
+        <input type="text" name="address" required>
+      </label>
+
+      <label>Payment method
+        <select name="paymentType">
+          <option value="card">Card</option>
+          <option value="paypal">PayPal</option>
+        </select>
+      </label>
+
+      <!-- If using Thymeleaf, server will place payment fields here conditionally -->
+
+      <button type="submit" class="btn">Confirm order</button>
+    </form>
+  </div>
+
+  <footer>
+    <small>© Online Shop</small>
+  </footer>
+</body>
+</html>
