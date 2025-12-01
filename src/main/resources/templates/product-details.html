@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Product - Online Shop</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:Arial;margin:0;padding:0}
+    header,footer{background:#222;color:#fff;padding:12px 20px}
+    .container{padding:20px}
+    .row{display:flex;gap:20px}
+    .btn{padding:8px 10px;border-radius:4px;background:#007bff;color:#fff;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="display:inline">Product</h1>
+    <nav style="float:right">
+      <a href="/">Home</a>
+      <a href="/products">Products</a>
+      <a href="/cart">Cart</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <img src="https://via.placeholder.com/360x240" alt="Product image">
+      </div>
+      <div>
+        <h2>Product Title</h2>
+        <p>Product full description goes here.</p>
+        <p><strong>Price: $XX.XX</strong></p>
+        <form action="/cart/add" method="post">
+          <!-- If using Thymeleaf: <input type="hidden" th:name="productId" th:value="${product.id}"/> -->
+          <label>Quantity: <input type="number" name="quantity" value="1" min="1"></label>
+          <br><br>
+          <button type="submit" class="btn">Add to cart</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <small>© Online Shop</small>
+  </footer>
+</body>
+</html>
