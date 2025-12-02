@@ -1,48 +1,48 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <title>Admin - Products</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    body{font-family:Arial;margin:0;padding:0}
-    header,footer{background:#222;color:#fff;padding:12px 20px}
-    .container{padding:20px}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:8px;border:1px solid #ddd}
-    .btn{padding:6px 10px;background:#28a745;color:#fff;text-decoration:none;border-radius:4px}
-  </style>
+    <meta charset="UTF-8">
+    <title>Admin – Product Management</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <header>
-    <h1 style="display:inline">Admin - Manage Products</h1>
-    <nav style="float:right"><a href="/">Home</a></nav>
-  </header>
 
-  <div class="container">
-    <a href="/admin/products/new" class="btn">Add New Product</a>
+<header style="padding: 15px; background: #f4f4f4; border-bottom: 1px solid #ccc;">
+    <nav style="display: flex; gap: 20px; font-size: 18px;">
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/cart">Cart</a>
+        <a href="/checkout">Checkout</a>
+        <a href="/admin/products" style="margin-left:auto;">Admin</a>
+    </nav>
+</header>
 
-    <table style="margin-top:12px">
-      <thead>
-        <tr><th>ID</th><th>Name</th><th>Price</th><th>Stock</th><th>Action</th></tr>
-      </thead>
-      <tbody>
-        <!-- Backend will populate admin product list -->
+<div class="container">
+    <h1>Admin – Products</h1>
+
+    <a href="/admin/products/new">Add New Product</a>
+
+    <table style="width:100%; margin-top:20px;">
         <tr>
-          <td>1</td>
-          <td>Sample Product</td>
-          <td>$15.00</td>
-          <td>10</td>
-          <td>
-            <a href="/admin/products/1/edit" class="btn">Edit</a>
-          </td>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
         </tr>
-      </tbody>
-    </table>
-  </div>
 
-  <footer>
-    <small>© Online Shop - Admin</small>
-  </footer>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td>
+                <a th:href="@{/admin/products/edit/{id}(id=${product.id})}">Edit</a>
+                <a th:href="@{/admin/products/delete/{id}(id=${product.id})}" style="color:red;">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<footer style="text-align:center; padding: 20px; background:#f4f4f4; margin-top:50px;">
+    <p>&copy; 2025 Online Shop – Designed by Dilnaz Niiazova</p>
+</footer>
+
 </body>
 </html>
