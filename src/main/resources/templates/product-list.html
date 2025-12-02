@@ -1,58 +1,38 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <title>Products - Online Shop</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    body{font-family:Arial;margin:0;padding:0}
-    header,footer{background:#222;color:#fff;padding:12px 20px}
-    .container{padding:20px}
-    .grid{display:flex;flex-wrap:wrap;gap:12px}
-    .card{border:1px solid #ddd;padding:12px;width:220px;border-radius:6px}
-    .search{margin-bottom:12px}
-    .btn{padding:6px 8px;background:#007bff;color:#fff;text-decoration:none;border-radius:4px}
-  </style>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <header>
-    <h1 style="display:inline">Products</h1>
-    <nav style="float:right">
-      <a href="/">Home</a>
-      <a href="/cart">Cart</a>
+
+<header style="padding: 15px; background: #f4f4f4; border-bottom: 1px solid #ccc;">
+    <nav style="display: flex; gap: 20px; font-size: 18px;">
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/cart">Cart</a>
+        <a href="/checkout">Checkout</a>
+        <a href="/admin/products" style="margin-left:auto;">Admin</a>
     </nav>
-  </header>
+</header>
 
-  <div class="container">
-    <div class="search">
-      <!-- Replace with server-driven form or search component -->
-      <form action="/products" method="get">
-        <input type="text" name="q" placeholder="Search products">
-        <button type="submit" class="btn">Search</button>
-      </form>
+<div class="container">
+    <h1>Products</h1>
+
+    <div th:each="product : ${products}" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
+        <h2 th:text="${product.name}">Product Name</h2>
+        <p th:text="${product.description}">Product description</p>
+        <p>Price: <span th:text="${product.price}">0</span> €</p>
+
+        <a th:href="@{/products/{id}(id=${product.id})}">View Details</a>
     </div>
+</div>
 
-    <div class="grid">
-      <!-- Example static entries; backend should render products here -->
-      <div class="card">
-        <img src="https://via.placeholder.com/200x120" alt="">
-        <h4>Product A</h4>
-        <p>Short description</p>
-        <p><strong>$12.50</strong></p>
-        <a class="btn" href="/products/10">Details</a>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/200x120" alt="">
-        <h4>Product B</h4>
-        <p>Short description</p>
-        <p><strong>$23.00</strong></p>
-        <a class="btn" href="/products/11">Details</a>
-      </div>
-    </div>
-  </div>
+<footer style="text-align:center; padding: 20px; background:#f4f4f4; margin-top:50px;">
+    <p>&copy; 2025 Online Shop – Designed by Dilnaz Niiazova</p>
+</footer>
 
-  <footer>
-    <small>© Online Shop</small>
-  </footer>
 </body>
 </html>
+
