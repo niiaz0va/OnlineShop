@@ -1,50 +1,45 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <title>Checkout - Online Shop</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    body{font-family:Arial;margin:0;padding:0}
-    header,footer{background:#222;color:#fff;padding:12px 20px}
-    .container{padding:20px;max-width:700px;margin:0 auto}
-    label{display:block;margin-top:8px}
-    input,select{width:100%;padding:8px;margin-top:4px;border:1px solid #ccc;border-radius:4px}
-    .btn{padding:10px 14px;background:#007bff;color:#fff;text-decoration:none;border:none;border-radius:4px;cursor:pointer;margin-top:12px}
-  </style>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <header>
-    <h1 style="display:inline">Checkout</h1>
-    <nav style="float:right"><a href="/">Home</a><a href="/cart" style="margin-left:10px">Cart</a></nav>
-  </header>
 
-  <div class="container">
-    <h3>Shipping Information</h3>
-    <form action="/checkout/confirm" method="post">
-      <label>Full name
-        <input type="text" name="name" required>
-      </label>
+<header style="padding: 15px; background: #f4f4f4; border-bottom: 1px solid #ccc;">
+    <nav style="display: flex; gap: 20px; font-size: 18px;">
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/cart">Cart</a>
+        <a href="/checkout">Checkout</a>
+        <a href="/admin/products" style="margin-left:auto;">Admin</a>
+    </nav>
+</header>
 
-      <label>Address
-        <input type="text" name="address" required>
-      </label>
+<div class="container">
+    <h1>Checkout</h1>
 
-      <label>Payment method
-        <select name="paymentType">
-          <option value="card">Card</option>
-          <option value="paypal">PayPal</option>
-        </select>
-      </label>
+    <form action="/checkout/complete" method="post">
+        <label>Name:</label>
+        <input type="text" name="name" required><br><br>
 
-      <!-- If using Thymeleaf, server will place payment fields here conditionally -->
+        <label>Address:</label>
+        <input type="text" name="address" required><br><br>
 
-      <button type="submit" class="btn">Confirm order</button>
+        <label>Payment Method:</label>
+        <select name="paymentMethod" required>
+            <option value="paypal">PayPal</option>
+            <option value="credit">Credit Card</option>
+        </select><br><br>
+
+        <button type="submit">Complete Purchase</button>
     </form>
-  </div>
+</div>
 
-  <footer>
-    <small>© Online Shop</small>
-  </footer>
+<footer style="text-align:center; padding: 20px; background:#f4f4f4; margin-top:50px;">
+    <p>&copy; 2025 Online Shop – Designed by Dilnaz Niiazova</p>
+</footer>
+
 </body>
 </html>
