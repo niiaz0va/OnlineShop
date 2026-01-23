@@ -5,95 +5,58 @@
     <title>Online Shopping System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS -->
     <link rel="stylesheet" th:href="@{/styles.css}">
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
 <header class="navbar">
     <div class="logo">OnlineShop</div>
     <nav>
-        <a href="#products">Products</a>
-        <a href="#cart">Cart</a>
-        <a href="#login">Login</a>
-        <a href="#admin">Admin</a>
+        <a th:href="@{/products}">Products</a>
+        <a th:href="@{/cart}">Cart</a>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/admin/products}">Admin</a>
     </nav>
 </header>
 
-<!-- ================= HERO SECTION ================= -->
 <section class="hero">
     <h1>Shop Smarter, Faster, Better</h1>
     <p>Your one-stop online shopping platform</p>
-    <button onclick="scrollToProducts()">Browse Products</button>
+    <a th:href="@{/products}" class="btn">Browse Products</a>
 </section>
 
-<!-- ================= PRODUCT CATALOG ================= -->
-<section id="products" class="section">
-    <h2>Product Catalog</h2>
+<section class="section">
+    <h2>Featured Products</h2>
 
     <div class="product-grid">
-
-        <!-- Product Card -->
         <div class="product-card">
-            <img src="assets/images/laptop.jpg" alt="Laptop">
+            <img th:src="@{/assets/images/laptop.jpg}" alt="Laptop">
             <h3>Laptop</h3>
             <p>$1200</p>
-            <button onclick="addToCart('Laptop', 1200)">Add to Cart</button>
         </div>
 
         <div class="product-card">
-            <img src="assets/images/phone.jpg" alt="Smartphone">
+            <img th:src="@{/assets/images/phone.jpg}" alt="Smartphone">
             <h3>Smartphone</h3>
             <p>$800</p>
-            <button onclick="addToCart('Smartphone', 800)">Add to Cart</button>
         </div>
 
         <div class="product-card">
-            <img src="assets/images/headphones.jpg" alt="Headphones">
+            <img th:src="@{/assets/images/headphones.jpg}" alt="Headphones">
             <h3>Headphones</h3>
             <p>$150</p>
-            <button onclick="addToCart('Headphones', 150)">Add to Cart</button>
         </div>
-
     </div>
 </section>
 
-<!-- ================= SHOPPING CART ================= -->
-<section id="cart" class="section">
-    <h2>Shopping Cart</h2>
-    <ul id="cartItems"></ul>
-    <p class="total">Total: $<span id="totalPrice">0</span></p>
-    <button onclick="checkout()">Checkout</button>
-</section>
-
-<!-- ================= LOGIN / REGISTER ================= -->
-<section id="login" class="section auth">
-    <h2>User Login</h2>
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <button>Login</button>
-</section>
-
-<!-- ================= ADMIN PANEL ================= -->
-<section id="admin" class="section admin">
-    <h2>Admin Panel</h2>
-    <p>Manage products and view orders</p>
-    <button>View Orders</button>
-    <button>Manage Products</button>
-</section>
-
-<!-- ================= FOOTER ================= -->
 <footer>
     <p>© 2026 Online Shopping System | Software Development Methodologies</p>
 </footer>
 
-<!-- JS -->
 <script th:src="@{/app.js}"></script>
 </body>
 </html>
+
 
