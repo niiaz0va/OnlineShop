@@ -1,32 +1,42 @@
-let cart = [];
-let total = 0;
+// Wait for DOM
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-box input');
+    const categoryCards = document.querySelectorAll('.category-card');
+    const productCards = document.querySelectorAll('.product-card');
+    const hearts = document.querySelectorAll('.heart-icon');
 
-function addToCart(product, price) {
-    cart.push({ product, price });
-    total += price;
-    renderCart();
-}
-
-function renderCart() {
-    const cartItems = document.getElementById("cartItems");
-    cartItems.innerHTML = "";
-
-    cart.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.product} - $${item.price}`;
-        cartItems.appendChild(li);
+    // 1. Search filter
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        productCards.forEach(card => {
+            const name = card.querySelector('.product-name').textContent.toLowerCase();
+            card.style.display = name.includes(query) ? 'block' : 'none';
+        });
     });
 
-    document.getElementById("totalPrice").textContent = total;
-}
+    // 2. Category filter
+    categoryCards.forEach(cat => {
+        cat.addEventListener('click', () => {
+            // Remove active class
+            categoryCards.forEach(c => c.classList.remove('active'));
+            cat.classList.add('active');
 
-function checkout() {
-    alert("Order placed successfully!");
-    cart = [];
-    total = 0;
-    renderCart();
-}
+            const category = cat.querySelector('.category-name').textContent.toLowerCase();
+            productCards.forEach(card => {
+                const productCategory = card.getAttribute('data-category');
+                if(category === 'all products' || productCategory === category){
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
 
-function scrollToProducts() {
-    document.getElementById("products").scrollIntoView({ behavior: "smooth" });
-}
+    // 3. Heart toggle
+    hearts.forEach(heart => {
+        heart.addEventListener('click', () => {
+            heart.classList.toggle('favorited');
+        });
+    });
+});
