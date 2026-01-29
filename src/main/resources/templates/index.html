@@ -2,61 +2,174 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Online Shopping System</title>
+    <title>SCMIS – Smart Online Shopping Management System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" th:href="@{/styles.css}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+    <!-- Basic Styling -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
 
+        header {
+            background-color: #1e293b;
+            color: #fff;
+            padding: 20px 40px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .hero {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            margin-bottom: 10px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .product-card h3 {
+            margin-top: 0;
+        }
+
+        .product-card p {
+            font-size: 14px;
+        }
+
+        .product-card button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-card button:hover {
+            background-color: #1d4ed8;
+        }
+
+        footer {
+            background-color: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
 <body>
 
-<header class="navbar">
-    <div class="logo">OnlineShop</div>
-    <nav>
-        <a th:href="@{/products}">Products</a>
-        <a th:href="@{/cart}">Cart</a>
-        <a th:href="@{/login}">Login</a>
-        <a th:href="@{/admin/products}">Admin</a>
-    </nav>
-</header>
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <h1>SCMIS</h1>
+        <p>Smart Online Shopping Management System</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Cart</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
 
-<section class="hero">
-    <h1>Shop Smarter, Faster, Better</h1>
-    <p>Your one-stop online shopping platform</p>
-    <a th:href="@{/products}" class="btn">Browse Products</a>
-</section>
+    <!-- MAIN CONTENT -->
+    <div class="container">
 
-<section class="section">
-    <h2>Featured Products</h2>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h2>Welcome to SCMIS</h2>
+            <p>
+                A simple, efficient, and user-friendly online shopping platform
+                designed using modern software engineering principles.
+            </p>
+        </section>
 
-    <div class="product-grid">
-        <div class="product-card">
-            <img th:src="@{/assets/images/laptop.jpg}" alt="Laptop">
-            <h3>Laptop</h3>
-            <p>$1200</p>
-        </div>
+        <!-- PRODUCT LIST -->
+        <section>
+            <h2>Available Products</h2>
 
-        <div class="product-card">
-            <img th:src="@{/assets/images/phone.jpg}" alt="Smartphone">
-            <h3>Smartphone</h3>
-            <p>$800</p>
-        </div>
+            <div class="products">
 
-        <div class="product-card">
-            <img th:src="@{/assets/images/headphones.jpg}" alt="Headphones">
-            <h3>Headphones</h3>
-            <p>$150</p>
-        </div>
+                <div class="product-card">
+                    <h3>Product 1</h3>
+                    <p>High-quality product description goes here.</p>
+                    <p><strong>Price:</strong> $25</p>
+                    <button>Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <h3>Product 2</h3>
+                    <p>Reliable and affordable product.</p>
+                    <p><strong>Price:</strong> $40</p>
+                    <button>Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <h3>Product 3</h3>
+                    <p>Popular item with excellent reviews.</p>
+                    <p><strong>Price:</strong> $60</p>
+                    <button>Add to Cart</button>
+                </div>
+
+            </div>
+        </section>
+
     </div>
-</section>
 
-<footer>
-    <p>© 2026 Online Shopping System | Software Development Methodologies</p>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 SCMIS Project | Software Engineering</p>
+    </footer>
 
-<script th:src="@{/app.js}"></script>
 </body>
 </html>
+
 
 
